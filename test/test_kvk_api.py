@@ -3,8 +3,8 @@
 An example test case with unittest.
 See: https://docs.python.org/3/library/unittest.html
 """
-from kvk.src.kvk import KVK
-from kvk.src.kvk import BasisProfielPaths
+from kvk.src.kvk_api_client import KVK
+from kvk.src.kvk_api_client import BasisProfielPaths
 
 KVK_NUMBER = '68750110'
 VESTIGINGSNUMMER = '000038509504'

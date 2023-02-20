@@ -1,7 +1,6 @@
 """A very simple wrapper around KVK api."""
 
 import warnings
-from enum import Enum
 import os
 import requests
 from dotenv import load_dotenv
@@ -10,7 +9,7 @@ warnings.filterwarnings('ignore', message='Unverified HTTPS request')
 load_dotenv()
 
 
-class APIpaths(Enum):
+class APIpaths():
     """API paths for KVK api."""
 
     # With the Basisprofiel API you can request extensive information from companies from the Trade Register
@@ -23,7 +22,7 @@ class APIpaths(Enum):
     naamgevingen = 'naamgevingen/kvknummer'
 
 
-class BasisProfielPaths(Enum):
+class BasisProfielPaths():
     """Basic profile paths for KVK api."""
 
     # Retrieve owner information for a specific company.
@@ -114,10 +113,10 @@ class KVK:
         geo_data (str): If True, returns geo data for the company.
         """
         if basis_profile_type:
-            basis_profile_type = basis_profile_type.value
+            basis_profile_type = basis_profile_type
 
         response = self.__send_request("GET",
-                                       APIpaths.basisprofielen.value,
+                                       APIpaths.basisprofielen,
                                        kvk_number,
                                        basis_profile_type,
                                        geoData=geo_data)
@@ -134,7 +133,7 @@ class KVK:
         """
 
         response = self.__send_request("GET",
-                                       APIpaths.vestigingsprofielen.value,
+                                       APIpaths.vestigingsprofielen,
                                        vestigingsnummer)
 
         return response
@@ -149,7 +148,7 @@ class KVK:
         """
 
         response = self.__send_request("GET",
-                                       APIpaths.naamgevingen.value,
+                                       APIpaths.naamgevingen,
                                        kvk_number)
 
         return response
@@ -213,7 +212,7 @@ class KVK:
                 'HuisnummerToevoeging must be set together with huisnummer')
 
         response = self.__send_request("GET",
-                                       APIpaths.zoeken.value,
+                                       APIpaths.zoeken,
                                        kvkNummer=kvk_number,
                                        rsin=rsin,
                                        vestigingsnummer=vestigingsnummer,

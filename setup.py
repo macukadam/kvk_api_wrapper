@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="kvk_api_client",
-    version="0.0.1",
+    version="0.0.2",
     author="Ugurcan Akpulat",
     description="Simple python wrapper for KVK api",
     long_description=long_description,
