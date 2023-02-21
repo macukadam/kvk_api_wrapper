@@ -4,6 +4,7 @@ import warnings
 import os
 import requests
 from dotenv import load_dotenv
+from typing import Optional
 
 warnings.filterwarnings('ignore', message='Unverified HTTPS request')
 load_dotenv()
@@ -102,7 +103,7 @@ class KVK:
         return response
 
     def get_basis_profiel(self, kvk_number: str,
-                          basis_profile_type: BasisProfielPaths | None = None,
+                          basis_profile_type: Optional[BasisProfielPaths] = None,
                           geo_data: str = "False") -> requests.Response:
         """
         Sends a GET request to the KVK basisprofiel API and returns the response.
@@ -154,19 +155,19 @@ class KVK:
         return response
 
     def get_companies(self,
-                      kvk_number: str | None = None,
-                      rsin: str | None = None,
-                      vestigingsnummer: str | None = None,
-                      handelsnaam: str | None = None,
-                      straatnaam: str | None = None,
-                      plaats: str | None = None,
-                      postcode: str | None = None,
-                      huisnummer: str | None = None,
-                      huisnummerToevoeging: str | None = None,
-                      type: str | None = None,
-                      InclusiefInactieveRegistraties: bool | None = None,
-                      pagina: int | None = None,
-                      aantal: int | None = None,
+                      kvk_number: Optional[str] = None,
+                      rsin: Optional[str] = None,
+                      vestigingsnummer: Optional[str] = None,
+                      handelsnaam: Optional[str] = None,
+                      straatnaam: Optional[str] = None,
+                      plaats: Optional[str] = None,
+                      postcode: Optional[str] = None,
+                      huisnummer: Optional[str] = None,
+                      huisnummerToevoeging: Optional[str] = None,
+                      type: Optional[str] = None,
+                      InclusiefInactieveRegistraties: Optional[bool] = None,
+                      pagina: Optional[int] = None,
+                      aantal: Optional[int] = None,
                       ) -> requests.Response:
         """
         Sends a GET request to the KVK companies search API and returns
@@ -227,4 +228,3 @@ class KVK:
                                        pagina=pagina,
                                        antal=aantal)
         return response
-
