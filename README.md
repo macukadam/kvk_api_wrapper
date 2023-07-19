@@ -33,7 +33,7 @@ from kvk_api_client import KVK
 kvk = KVK(test=True)
 
 # Call an API method
-companies = kvk.get_companies(kvk_number="12312312")
+companies = kvk.get_companies(kvk_number="69599084")
 ```
 
 # TESTS
