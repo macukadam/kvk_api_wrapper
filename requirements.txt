@@ -4,3 +4,4 @@ idna==3.4
 python-dotenv==0.21.1
 requests==2.28.2
 urllib3==1.26.14
+aiohttp==3.8.5

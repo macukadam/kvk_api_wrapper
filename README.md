@@ -32,8 +32,10 @@ from kvk_api_client import KVK
 # Create a KVK API client instance
 kvk = KVK(test=True)
 
+KVK_NUMBER = "68750110"
+
 # Call an API method
-companies = kvk.get_companies(kvk_number="12312312")
+companies = kvk.get_companies(kvk_number=KVK_NUMBER)
 ```
 
 # TESTS
@@ -43,3 +45,18 @@ Make sure pytest is installed on your environment
 ```sh
 python3 -m pytest
 ```
+
+# KVK API Asycn Client
+
+```python
+from kvk_async_api_client import KVK
+
+KVK_NUMBER = "68750110"
+
+async def get_basis_profile():
+    async with KVK(test=True) as kvk:
+        profiel = await kvk.get_basis_profiel(KVK_NUMBER)
+```
+
+# Repo
+[KVK WRAPPER](https://github.com/macukadam/kvk_api_wrapper)

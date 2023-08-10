@@ -1,38 +1,9 @@
 """A very simple wrapper around KVK api."""
 
-import warnings
 import os
 import requests
-from dotenv import load_dotenv
 from typing import Optional
-
-warnings.filterwarnings('ignore', message='Unverified HTTPS request')
-load_dotenv()
-
-
-class APIpaths():
-    """API paths for KVK api."""
-
-    # With the Basisprofiel API you can request extensive information from companies from the Trade Register
-    basisprofielen = 'basisprofielen'
-    # With the Zoeken API you can look up companies in the Trade Register. You can then request the data using another API.
-    zoeken = 'zoeken'
-    # With the Vestigingsprofiel API you request specific information from companies from the Trade Register.
-    vestigingsprofielen = 'vestigingsprofielen'
-    # With the Naamgeving API you request name data of companies from the Trade Register.
-    naamgevingen = 'naamgevingen/kvknummer'
-
-
-class BasisProfielPaths():
-    """Basic profile paths for KVK api."""
-
-    # Retrieve owner information for a specific company.
-    eigenaar = 'eigenaar'
-    # Retrieve head office information for a specific company.
-    hoodfvestiging = 'hoofdvestiging'
-    # Retrieve a list of branches for a specific company.
-    vestigingen = 'vestigingen'
-
+from kvk_api_client.paths import APIpaths
 
 class KVK:
     """
@@ -67,7 +38,6 @@ class KVK:
         self.host = os.getenv('KVK_HOST')
         self.api_version = os.getenv('KVK_API_VERSION')
         self.api_key = os.getenv('KVK_APIKEY_PROD')
-        self.api_version = os.getenv('KVK_API_VERSION')
 
         if not self.host:
             raise ValueError('KVK_HOST is not set')
@@ -103,7 +73,7 @@ class KVK:
         return response
 
     def get_basis_profiel(self, kvk_number: str,
-                          basis_profile_type: Optional[BasisProfielPaths] = None,
+                          basis_profile_type: Optional[str] = None,
                           geo_data: str = "False") -> requests.Response:
         """
         Sends a GET request to the KVK basisprofiel API and returns the response.
