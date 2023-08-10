@@ -8,7 +8,7 @@ with open("requirements.txt", "r") as f:
 
 setuptools.setup(
     name="kvk_api_client",
-    version="0.0.6",
+    version="0.0.7",
     author="Ugurcan Akpulat",
     description="Simple python wrapper for KVK api",
     long_description=long_description,
